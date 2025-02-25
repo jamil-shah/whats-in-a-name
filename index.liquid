@@ -4,8 +4,27 @@ title: 11ty Boilerplate
 ---
 
 <h1>What's in a name?</h1>
+<div
+  x-data="{
+    names: ['Jamil', 'Carson', 'Andrew', 'Loonmei', 'Jenna', 'Fabian', 'Benjamin', 'George', 'Ryan', 'Steve'],
+    randomName: '',
+    generateName() {
+      const newName = this.names[Math.floor(Math.random() * this.names.length)];
+      alert(newName);
+      this.randomName = newName;
+    }
+  }"
+  style="text-align: center; margin-top: 2rem;"
+>
+  <button
+    @click="generateName()"
+    style="padding: 0.5rem 1rem; font-size: 1rem;"
+  >
+    Generate Name
+  </button>
 
-<div x-data="randomNameGenerator">
-  <button x-on:click="generateName()">Generate Name</button>
-  <p x-text="randomName"></p>
+  <p
+    x-text="randomName"
+    style="margin-top: 1rem; font-size: 1.25rem; font-weight: bold;"
+  ></p>
 </div>
